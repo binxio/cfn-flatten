@@ -293,6 +293,3 @@ class TemplateParser:
         self.json_extract(self.data)
         self.clean_template()
 
-# 67->exit   use_default_parameters = false
-# 69->68     parameter no default
-# 67->exit, 69->68
