@@ -1,0 +1,29 @@
+{
+    "ssm_parameters": {
+        "nameofparam": {
+            "version": "test"
+        }
+    },
+    "input": {
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": "{{resolve:ssm:nameofparam:version}}"
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyTest": {
+                    "Type": "AWS::Some::Type",
+                    "Properties": {
+                        "MyProp": "test"
+                    }
+                }
+            }
+        }
+    }
+}

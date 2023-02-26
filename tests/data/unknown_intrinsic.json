@@ -1,0 +1,17 @@
+{
+    "input": {
+        "Resources": {
+            "MyResource": {
+                "Type": "SomeType",
+                "Properties": {
+                    "MyProps": {
+                        "Fn::DoesNotExist": ["xx", "yy"]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "error": "Unknown intrinsic Fn::DoesNotExist"
+    }
+}

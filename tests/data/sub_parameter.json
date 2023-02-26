@@ -1,0 +1,33 @@
+{
+    "input": {
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::Sub": [
+                            "ABC-${Param1}-DEF",
+                            {
+                                "Param1": {
+                                    "Ref": "AWS::Region"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyTest": {
+                    "Type": "AWS::Some::Type",
+                    "Properties": {
+                        "MyProp": "ABC-eu-central-1-DEF"
+                    }
+                }
+            }
+        }
+    }
+}

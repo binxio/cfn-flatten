@@ -1,0 +1,15 @@
+{
+    "input": {
+        "Conditions": {
+            "MyFalse": {
+                "Fn::Equals": ["xx", "yy"]
+            },
+            "MyTrue": {
+                "Fn::Equals": ["zz", "zz"]
+            }
+        }
+    },
+    "expected": {
+        "conditions": {"MyFalse": false, "MyTrue": true}
+    }
+}

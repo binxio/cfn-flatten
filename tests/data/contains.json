@@ -1,0 +1,24 @@
+{
+    "input": {
+        "Conditions": {
+            "MyTrueCondition": {
+                "Fn::Contains": [
+                    ["1", "2"],
+                    "1"
+                ]
+            },
+            "MyFalseCondition": {
+                "Fn::Contains": [
+                    ["1", "2"],
+                    "3"
+                ]
+            }
+        }
+    },
+    "expected": {
+        "conditions": {
+            "MyTrueCondition": true,
+            "MyFalseCondition": false
+        }
+    }
+}

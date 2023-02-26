@@ -1,0 +1,25 @@
+{
+    "input": {
+        "Conditions": {
+            "MyCondition": true,
+            "MyNotCondition": {
+                "Fn::Not": [
+                    { "Condition" : "MyCondition" }
+                ]
+            },
+            "MyOr": {
+                "Fn::Or": [
+                    { "Condition" : "MyCondition" },
+                    { "Condition" : "MyNotCondition" }
+                ]
+            }
+        }
+    },
+    "expected": {
+        "conditions": {
+            "MyCondition": true,
+            "MyNotCondition": false,
+            "MyOr": true
+        }
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "input": {
+        "Resources": {
+            "MyRole": {
+                "Type": "AWS::IAM::Role",
+                "Properties": {
+                    "RoleName": {
+                        "Fn::Length": [
+                            1,
+                            2,
+                            3,
+                            4,
+                            5
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyRole": {
+                    "Properties": {
+                        "RoleName": 5
+                    },
+                    "Type": "AWS::IAM::Role"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "input": {
+        "Parameters": {
+            "CidrBlock": {
+                "Type": "String",
+                "Default": "192.168.0.0/24"
+            }
+        },
+        "Resources": {
+            "MyRole": {
+                "Type": "AWS::IAM::Role",
+                "Properties": {
+                    "RoleName": {
+                        "Fn::Select": [
+                            0,
+                            {
+                                "Fn::Cidr": [
+                                    {
+                                        "Ref": "CidrBlock"
+                                    },
+                                    "6",
+                                    "5"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyRole": {
+                    "Properties": {
+                        "RoleName": "192.168.0.0/27"
+                    },
+                    "Type": "AWS::IAM::Role"
+                }
+            }
+        }
+    }
+}

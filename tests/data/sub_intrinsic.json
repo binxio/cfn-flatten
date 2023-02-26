@@ -1,0 +1,36 @@
+{
+    "input": {
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::Sub": {
+                            "Fn::Join": [
+                                ".",
+                                [
+                                    "${AWS::Region}",
+                                    "${AWS::AccountId}",
+                                    "${AWS::Partition}",
+                                    "4"
+                                ]
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyTest": {
+                    "Type": "AWS::Some::Type",
+                    "Properties": {
+                        "MyProp": "eu-central-1.123456789.aws.4"
+                    }
+                }
+            }
+        }
+    }
+}

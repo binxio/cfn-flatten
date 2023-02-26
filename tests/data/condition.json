@@ -1,0 +1,24 @@
+{
+    "input": {
+        "Conditions": {
+            "MyCondition": {
+                "Fn::Equals": [
+                    "AWS::Region",
+                    "xx-xxxxx-xx"
+                ]
+            }
+        },
+        "Resources": {
+            "MyRole": {
+                "Type": "AWS::IAM::Role",
+                "Properties": {},
+                "Condition": "MyCondition"
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {}
+        }
+    }
+}

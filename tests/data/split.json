@@ -1,0 +1,34 @@
+{
+    "input": {
+        "Resources": {
+            "MyRole": {
+                "Type": "AWS::IAM::Role",
+                "Properties": {
+                    "RoleName": {
+                        "Fn::Join": [
+                            "-",
+                            {
+                                "Fn::Split": [
+                                    ".",
+                                    "1.2.3.4"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyRole": {
+                    "Properties": {
+                        "RoleName": "1-2-3-4"
+                    },
+                    "Type": "AWS::IAM::Role"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "input": {
+        "Parameters": {
+            "MyParameter": {
+                "Type": "String"
+            }
+        },
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Ref": "WrongName"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "error": "Reference 'WrongName' not found. A reference should be either a parameter, a pseudo parameter or the logical name of a resource"
+    }
+}

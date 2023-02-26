@@ -1,0 +1,19 @@
+{
+    "input": {
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::Sub": {
+                            "a": "b"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "error": "Wrong list parameters"
+    }
+}

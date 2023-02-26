@@ -1,0 +1,34 @@
+{
+    "input": {
+        "Mappings": {
+            "MyMapping": {
+                "Key01": {
+                    "Name": "Value01"
+                },
+                "Key02": {
+                    "Name": "Value02"
+                },
+                "Key03": {
+                    "Name": "Value03"
+                }
+            }
+        },
+        "Resources": {
+            "myEC2Instance": {
+                "Type": "AWS::EC2::Instance",
+                "Properties": {
+                    "ImageId": {
+                        "Fn::FindInMap": [
+                            "WrongName",
+                            "Key02",
+                            "Name"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "error": "Mapping WrongName not found"
+    }
+}

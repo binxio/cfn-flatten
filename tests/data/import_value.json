@@ -1,0 +1,29 @@
+{
+    "exports": {
+        "test": "importvalue"
+    },
+    "input": {
+        "Resources": {
+            "MyResource": {
+                "Type": "SomeType",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::ImportValue": "test"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyResource": {
+                    "Type": "SomeType",
+                    "Properties": {
+                        "MyProp": "importvalue"
+                    }
+                }
+            }
+        }
+    }
+}

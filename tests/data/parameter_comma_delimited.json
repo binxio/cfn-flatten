@@ -1,0 +1,48 @@
+{
+    "input": {
+        "Parameters": {
+            "DbSubnetIpBlocks": {
+                "Description": "Comma-delimited list of three CIDR blocks",
+                "Type": "CommaDelimitedList",
+                "Default": "10.0.48.0/24, 10.0.112.0/24, 10.0.176.0/24"
+            }
+        },
+        "Resources": {
+            "VPC": {
+                "Type": "AWS::EC2::VPC"
+            },
+            "Subnet0": {
+                "Type": "AWS::EC2::Subnet",
+                "Properties": {
+                    "VpcId": {
+                        "Ref": "VPC"
+                    },
+                    "CidrBlock": {
+                        "Fn::Select": [
+                            "0",
+                            {
+                                "Ref": "DbSubnetIpBlocks"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "Subnet0": {
+                    "Properties": {
+                        "CidrBlock": "10.0.48.0/24",
+                        "VpcId": "<!--VPC.Ref-->"
+                    },
+                    "Type": "AWS::EC2::Subnet"
+                },
+                "VPC": {
+                    "Type": "AWS::EC2::VPC"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "use_parameter_defaults": false,
+    "parameters": {
+        "MyParameter": "frominput"
+    },
+    "input": {
+        "Parameters": {
+            "MyParameter": {
+                "Type": "String"
+            }
+        }
+    },
+    "expected": {
+        "parameters": {
+            "MyParameter": "frominput"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "input": {
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::Sub": "ABC-${AWS::AccountId}-DEF"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyTest": {
+                    "Type": "AWS::Some::Type",
+                    "Properties": {
+                        "MyProp": "ABC-123456789-DEF"
+                    }
+                }
+            }
+        }
+    }
+}

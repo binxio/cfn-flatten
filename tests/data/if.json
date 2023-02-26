@@ -1,0 +1,46 @@
+{
+    "input": {
+        "Conditions": {
+            "MyCondition": true,
+            "MyNotCondition": {
+                "Fn::Not": [
+                    { "Condition" : "MyCondition" }
+                ]
+            }
+        },
+        "Resources": {
+            "MyResource": {
+                "Type": "SomeType",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::If": [
+                            "MyCondition",
+                            "True",
+                            "False"
+                        ]
+                    },
+                    "MyProp2": {
+                        "Fn::If": [
+                            "MyNotCondition",
+                            "True",
+                            "False"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyResource": {
+                    "Type": "SomeType",
+                    "Properties": {
+                        "MyProp": "True",
+                        "MyProp2": "False"
+                    }
+                }
+            }
+        }
+    }
+}

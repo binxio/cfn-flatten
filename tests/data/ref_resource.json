@@ -1,0 +1,34 @@
+{
+    "input": {
+        "Resources": {
+            "MyRole": {
+                "Type": "AWS::IAM::Role",
+                "Properties": {}
+            },
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::GetAtt": "MyRole.Arn"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyRole": {
+                    "Properties": {},
+                    "Type": "AWS::IAM::Role"
+                },
+                "MyTest": {
+                    "Properties": {
+                        "MyProp": "<!--MyRole.Arn-->"
+                    },
+                    "Type": "AWS::Some::Type"
+                }
+            }
+        }
+    }
+}

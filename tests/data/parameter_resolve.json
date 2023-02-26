@@ -1,0 +1,32 @@
+{
+    "input": {
+        "Parameters": {
+            "MyParameter": {
+                "Type": "String",
+                "Default": "test"
+            }
+        },
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Ref": "MyParameter"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyTest": {
+                    "Properties": {
+                        "MyProp": "test"
+                    },
+                    "Type": "AWS::Some::Type"
+                }
+            }
+        }
+    }
+}

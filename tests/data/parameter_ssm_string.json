@@ -1,0 +1,20 @@
+{
+    "ssm_parameters": {
+        "ssmname": {
+            "0": "value"
+        }
+    },
+    "input": {
+        "Parameters": {
+            "MyParam": {
+                "Type": "AWS::SSM::Parameter::Value<string>",
+                "Default": "ssmname"
+            }
+        }
+    },
+    "expected": {
+        "parameters": {
+            "MyParam": "value"
+        }
+    }
+}

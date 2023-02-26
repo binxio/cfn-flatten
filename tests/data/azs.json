@@ -1,0 +1,65 @@
+{
+    "input": {
+        "Parameters": {
+            "MyParam": {
+                "Type": "String",
+                "Default": "test"
+            }
+        },
+        "Resources": {
+            "MyRole": {
+                "Type": "AWS::Resource::Type",
+                "Properties": {
+                    "Test1": {
+                        "Fn::GetAZs": ""
+                    },
+                    "Test2": {
+                        "Fn::GetAZs": "us-east-1"
+                    },
+                    "Test3": {
+                        "Fn::GetAZs": {
+                            "Ref": "AWS::Region"
+                        }
+                    },
+                    "Test4": {
+                        "Fn::Select": [
+                            2,
+                            {
+                                "Fn::GetAZs": {
+                                    "Ref": "AWS::Region"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyRole": {
+                    "Properties": {
+                        "Test1": [
+                            "eu-central-1a",
+                            "eu-central-1b",
+                            "eu-central-1c"
+                        ],
+                        "Test2": [
+                            "us-east-1a",
+                            "us-east-1b",
+                            "us-east-1c"
+                        ],
+                        "Test3": [
+                            "eu-central-1a",
+                            "eu-central-1b",
+                            "eu-central-1c"
+                        ],
+                        "Test4": "eu-central-1c"
+                    },
+                    "Type": "AWS::Resource::Type"
+                }
+            }
+        }
+    }
+}

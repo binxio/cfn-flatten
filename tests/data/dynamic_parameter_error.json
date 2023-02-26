@@ -1,0 +1,20 @@
+{
+    "ssm_parameters": {
+        "nameofparam": {
+            "version": "test"
+        }
+    },
+    "input": {
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": "{{resolve:bogus:nameofparam:version}}"
+                }
+            }
+        }
+    },
+    "expected": {
+        "error": "Dynamic parameter error {{resolve:bogus:nameofparam:version}}"
+    }
+}

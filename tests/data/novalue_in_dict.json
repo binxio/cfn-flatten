@@ -1,0 +1,31 @@
+{
+    "input": {
+        "Resources": {
+            "MyResource": {
+                "Type": "SomeType",
+                "Properties": {
+                    "MyList": {
+                        "First": "1",
+                        "Second": { "Ref": "AWS::NoValue" },
+                        "Third": "3"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyResource": {
+                    "Type": "SomeType",
+                    "Properties": {
+                        "MyList": {
+                            "First": "1",
+                            "Third": "3"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

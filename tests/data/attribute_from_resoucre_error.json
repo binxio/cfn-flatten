@@ -1,0 +1,17 @@
+{
+    "input": {
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::GetAtt": "MyRole.Arn"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "error": "attribute not found MyRole Arn"
+    }
+}

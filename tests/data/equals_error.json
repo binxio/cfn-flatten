@@ -1,0 +1,12 @@
+{
+    "input": {
+        "Conditions": {
+            "MyError": {
+                "Fn::Equals": "test"
+            }
+        }
+    },
+    "expected": {
+        "error": "Fn::Equals needs a list with two items as input"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "input": {
+        "Resources": {
+            "MyResource1": {
+                "Type": "SomeType"
+            },
+            "MyResource2": {
+                "Type": "SomeType",
+                "Properties": {
+                    "Res1Arn": {
+                        "Fn::Sub": "${MyResource1.Arn}"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyResource1": {
+                    "Type": "SomeType"
+                },
+                "MyResource2": {
+                    "Type": "SomeType",
+                    "Properties": {
+                        "Res1Arn": "<!--MyResource1.Arn-->"
+                    }
+                }   
+            }
+        }
+    }
+}

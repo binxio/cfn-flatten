@@ -1,0 +1,15 @@
+{
+    "input": {
+        "Parameters": {
+            "MyParameter": {
+                "Type": "String",
+                "Default": "test"
+            }
+        }
+    },
+    "expected": {
+        "parameters": {
+            "MyParameter": "test"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "input": {
+        "Parameters": {
+            "MyParam": {
+                "Type": "String",
+                "Default": "test"
+            }
+        },
+        "Resources": {
+            "MyRole": {
+                "Type": "AWS::IAM::Role",
+                "Properties": {
+                    "RoleName": {
+                        "Fn::Base64": {
+                            "Fn::Sub": "${MyParam}"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyRole": {
+                    "Properties": {
+                        "RoleName": "dGVzdA=="
+                    },
+                    "Type": "AWS::IAM::Role"
+                }
+            }
+        }
+    }
+}

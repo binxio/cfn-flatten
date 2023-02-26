@@ -1,0 +1,21 @@
+{
+    "input": {
+        "Resources": {
+            "MyResource": {
+                "Type": "SomeType",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::If": [
+                            "MyCondition",
+                            "True",
+                            "False"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "error": "Condition \"MyCondition\" not found"
+    }
+}

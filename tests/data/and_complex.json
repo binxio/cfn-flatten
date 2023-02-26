@@ -1,0 +1,42 @@
+{
+    "input": {
+        "Parameters": {
+            "ASecurityGroup": {
+                "Type": "String",
+                "Default": "test"
+            }
+        },
+        "Conditions": {
+            "SomeOtherCondition": {
+                "Fn::Equals": [
+                    "xx",
+                    "yy"
+                ]
+            },
+            "MyAndCondition": {
+                "Fn::And": [
+                    {
+                        "Fn::Equals": [
+                            "sg-mysggroup",
+                            {
+                                "Ref": "ASecurityGroup"
+                            }
+                        ]
+                    },
+                    {
+                        "Condition": "SomeOtherCondition"
+                    }
+                ]
+            }
+        }
+    },
+    "expected": {
+        "conditions": {
+            "MyAndCondition": false,
+            "SomeOtherCondition": false
+        },
+        "data": {
+            "Resources": {}
+        }
+    }
+}

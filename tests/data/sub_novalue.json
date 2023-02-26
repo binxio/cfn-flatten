@@ -1,0 +1,26 @@
+{
+    "input": {
+        "Resources": {
+            "MyTest": {
+                "Type": "AWS::Some::Type",
+                "Properties": {
+                    "MyProp": {
+                        "Fn::Sub": "ABC${AWS::NoValue}DEF"
+                    }
+                }
+            }
+        }
+    },
+    "expected": {
+        "data": {
+            "Resources": {
+                "MyTest": {
+                    "Type": "AWS::Some::Type",
+                    "Properties": {
+                        "MyProp": "ABCDEF"
+                    }
+                }
+            }
+        }
+    }
+}
